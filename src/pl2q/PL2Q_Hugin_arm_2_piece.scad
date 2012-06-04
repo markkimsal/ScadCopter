@@ -15,15 +15,34 @@ smudge = 0.1;
 //  rotate([ 0, 180, -90])
 //  translate(-[ -(arm_o_dia/2) - (spacing/2), 0, 0] )
 
+/*
 color( light_green )
 translate([ -(arm_o_dia/2) - (spacing/2), 0, 0] )
 arm_with_tab(arm_o_dia, arm_i_dia, arm_h/2, 0);
+*/
 
 
 //arm B
+/*
 color( light_blue )
 translate([ (arm_o_dia/2) + (spacing/2) + 5, 0, 0] )
 arm_with_notches(arm_o_dia, arm_i_dia, arm_h/2, 1);
+*/
+
+//arm A+B in one
+color( light_blue )
+
+rotate([ 0, 0, 45] )
+translate([ 0, arm_h/2, 0] )
+difference() {
+translate([ 0, 0, arm_o_dia/2] )
+rotate([ 90, 0, 0 ])
+rotate([ 0, 0, -135 ])
+arm_with_notches(arm_o_dia, arm_i_dia, arm_h, 1);
+
+translate([ 0, 0, -arm_o_dia/4])
+cube( [arm_h, arm_h, arm_o_dia/2], true);
+}
 
 
 module arm_bare(od, id, h) {
